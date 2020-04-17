@@ -61,19 +61,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let data of data; let idx=index">
+              <tr *ngFor="let item of data; let idx=index">
                 <th scope="row">{{idx+1}}</th>
                 <td>
-                  {{data.name}}
+                  {{item.name}}
                 </td>
                 <td>
-                  {{data.phone_number}}
+                  {{item.phone_number}}
                 </td>
                 <td>
-                  {{data.email}}
+                  {{item.email}}
                 </td>
                 <td>
-                  <button type="button" class="btn btn-success btn-round" (click)="openAccepted()">Accepted</button>
+                  <button type="button" class="btn btn-success btn-round" (click)="openAccepted(item)">Accepted</button>
+                  <button type="button" class="btn btn-danger btn-round"
+                    (click)="delete(item)">{{loading ? 'Deleting..':'Delete'}}</button>
                 </td>
               </tr>
             </tbody>

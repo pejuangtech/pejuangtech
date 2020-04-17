@@ -20,8 +20,8 @@ export class DetailOrderComponent implements OnInit {
   }
 
   loading: boolean;
-  accept(data) {
-    var id = data.id;
+  accept(user) {
+    var id = user.id;
     console.log(id);
     var r = confirm("Are you sure you want to accept this story?");
     if (r == true) {

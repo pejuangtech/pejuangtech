@@ -12,8 +12,8 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Capacity</p>
-                                    <p class="card-title">150GB
+                                    <p class="card-category">Orderan</p>
+                                    <p class="card-title" *ngIf="data">{{data?.length}}
                                         <p>
                                 </div>
                             </div>
@@ -38,8 +38,8 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Revenue</p>
-                                    <p class="card-title">$ 1,345
+                                    <p class="card-category">Portofolio</p>
+                                    <p class="card-title" *ngIf="portofolio"> {{portofolio?.length}}
                                         <p>
                                 </div>
                             </div>
@@ -64,8 +64,8 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Errors</p>
-                                    <p class="card-title">23
+                                    <p class="card-category">Stories</p>
+                                    <p class="card-title" *ngIf="stories">{{stories?.length}}
                                         <p>
                                 </div>
                             </div>
@@ -90,8 +90,8 @@
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Followers</p>
-                                    <p class="card-title">+45K
+                                    <p class="card-category">Admin</p>
+                                    <p class="card-title" *ngIf="user"> {{user?.length}}
                                         <p>
                                 </div>
                             </div>

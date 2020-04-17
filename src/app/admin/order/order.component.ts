@@ -32,9 +32,11 @@ export class OrderComponent implements OnInit {
       console.log("Cross Button", dismiss)
     })
   }
-  openAccepted() {
+  datas: any = [];
+  openAccepted(item) {
+    this.datas = item;
     const modalRef = this.modalService.open(AcceptedOrderComponent);
-    modalRef.componentInstance.user = this.data;
+    modalRef.componentInstance.user = this.datas;
     modalRef.result.then(res => {
       console.log("CloseButton", res)
     }, dismiss => {
@@ -55,6 +57,19 @@ export class OrderComponent implements OnInit {
     }).valueChanges({ idField: 'id' }).subscribe(res => {
       this.data = res;
     })
+  }
+  loading: boolean;
+  delete(item) {
+    var id = item.id;
+    console.log(id);
+    var r = confirm("Are you sure you want to delete this portofolio?");
+    if (r == true) {
+      this.db.collection('order').doc(id).delete().then(res => {
+        this.loading = false;
+      })
+    } else {
+      return;
+    }
   }
 
 }
