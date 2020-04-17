@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Add Administrator</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label>Name</label>
+      <div class="input-textarea">
+        <input [(ngModel)]="data.nama" name="nama" class="form-control" placeholder="Nama">
+      </div>
+      <label>Email</label>
+      <div class="input-textarea">
+        <input [(ngModel)]="data.email" name="email" class="form-control" placeholder="Email">
+      </div>
+      <label>Phone</label>
+      <div class="input-textarea">
+        <input [(ngModel)]="data.phone" name="phone" class="form-control" placeholder="Phone">
+      </div>
+      <label>Skill</label>
+      <div class="form-group">
+        <select [(ngModel)]="data.skill" class="form-control" name="skill">
+          <option value="FRONT END DEVELOPER">FRONT END DEVELOPER</option>
+          <option value="BACK END DEVELOPER">BACK END DEVELOPER</option>
+          <option value="DESIGNER">DESIGNER</option>
+        </select>
+      </div>
+      <label>Category</label>
+      <div class="form-group">
+        <select [(ngModel)]="data.category" class="form-control" name="category">
+          <option value="admin">admin</option>
+          <option value="superadmin">superadmin</option>
+        </select>
+      </div>
+    </div>
+  </form>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" style="margin-right: 10px;"
+      (click)="tambahData(); activeModal.close('Saved')" [disabled]="loading">{{loading ? 'Saving..':'Save'}}</button>
+  </div>
+</div>

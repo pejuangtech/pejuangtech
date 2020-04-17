@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Update About</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label>About</label>
+      <div class="input-textarea">
+        <textarea [(ngModel)]="about.isi" name="isi" class="form-control" placeholder="About" rows="4"></textarea>
+      </div>
+    </div>
+  </form>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" style="margin-right: 10px;"
+      (click)=" updateAbout();activeModal.dismiss('Data Updated')"
+      [disabled]="loading">{{loading ? 'Saving..':'Update'}}</button>
+  </div>
+</div>

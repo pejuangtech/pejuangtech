@@ -1,0 +1,16 @@
+<div class="card text-center" *ngFor="let data of dataStories">
+  <div class="card-header">
+    {{data.name}}
+  </div>
+  <div class="card-body">
+    <img src="{{data.image}}" style="height: 350px; width: 100%;"/>
+    <h5 class="card-title">{{data.email}}</h5>
+    <p class="card-text">{{data.message}}.</p>
+    <button (click)="accept(data)" class="btn btn-primary" *ngIf="data.verified == false" [disabled]="loading">{{loading ? 'Please wait..':'Accept'}}</button>
+    <button (click)="delete(data)" class="btn btn-danger" [disabled]="loading">{{loading ? 'Please wait..':'Delete'}}</button>
+    <button class="btn btn-success" *ngIf="data.verified == true">Accepted</button>
+  </div>
+  <div class="card-footer text-muted">
+    {{data.datetime.toDate() | date:'dd MMMM yyy'}}
+  </div>
+</div>

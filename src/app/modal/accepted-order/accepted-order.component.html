@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Detail Order</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form *ngFor="let user of user">
+    <div class="form-group">
+      <label>Name</label>
+      <div class="input-textarea">
+        <input [(ngModel)]="user.name" name="nama" class="form-control" placeholder="Nama">
+      </div>
+      <label>Phone</label>
+      <div class="input-textarea">
+        <input [(ngModel)]="user.phone_number" name="phone_number" class="form-control" placeholder="Phone">
+      </div>
+      <label>Email</label>
+      <div class="input-textarea">
+        <input [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email">
+      </div>
+      <label>Description</label>
+      <div class="input-textarea">
+        <input [(ngModel)]="user.description" name="description" class="form-control" placeholder="Description">
+      </div>
+    </div>
+  </form>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default btn-round" (click)="activeModal.dismiss('Cross click')">Close</button>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="sidebar-wrapper">
+  <div class="logo">
+    <a class="simple-text logo-mini">
+      <div class="logo-image-small">
+
+      </div>
+    </a>
+    <a href="" class="simple-text logo-normal">
+      PejuangTech
+    </a>
+  </div>
+  <ul class="nav">
+    <li routerLinkActive="active">
+      <a [routerLink]="['/admin/dashboard']">
+        <i class="nc-icon nc-bank"></i>
+        <p>Dashboard</p>
+      </a>
+    </li>
+    <!-- <li routerLinkActive="active">
+      <a [routerLink]="['/admin/testimoni']">
+        <i class="nc-icon nc-diamond"></i>
+        <p>Testimoni</p>
+      </a>
+    </li> -->
+    <li routerLinkActive="active">
+      <a [routerLink]="['/admin/stories']">
+        <i class="nc-icon nc-bulb-63"></i>
+        <p>Stories</p>
+      </a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/admin/portofolio']">
+        <i class="nc-icon nc-single-02"></i>
+        <p>Portofolio</p>
+      </a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['/admin/order']">
+        <i class="nc-icon nc-badge"></i>
+        <p>Order Now</p>
+      </a>
+    </li>
+    <li routerLinkActive="active" *ngIf="akseskategori == 'superadmin'">
+      <a [routerLink]="['/admin/settings']">
+        <i class="nc-icon nc-settings-gear-65"></i>
+        <p>Settings</p>
+      </a>
+    </li>
+  </ul>
+</div>

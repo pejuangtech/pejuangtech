@@ -1,0 +1,146 @@
+<div class="section">
+  <div class="container">
+    <button class="btn btn-primary" style="text-align: right; margin-left: 50px;" (click)="open(portofolio)">Add
+      Portofolio</button>
+      <div class="card text-center" *ngFor="let data of dataPortofolios">
+        <div class="card-header">
+          {{data.name}}
+        </div>
+        <div class="card-body">
+          <!-- <img src="{{data.image}}" style="height: 350px; width: 100%;"/> -->
+          <h5 class="card-title">{{data.description}}.</h5>
+          <table class="table table-striped">
+            <thead>
+              <th scope="col">
+                feature 1
+              </th>
+              <th scope="col">
+                feature 2
+              </th>
+              <th scope="col">
+                feature 3
+              </th>
+              <th scope="col">
+                feature 4
+              </th>
+            </thead>
+            <tbody>
+              <td>
+                {{data.desc_feature1}}
+              </td>
+              <td>
+                {{data.desc_feature2}}
+              </td>
+              <td>
+                {{data.desc_feature3}}
+              </td>
+              <td>
+                {{data.desc_feature4}}
+              </td>
+            </tbody>
+          </table>
+          <button (click)="delete(data)" class="btn btn-danger" [disabled]="loading">{{loading ? 'Please wait..':'Delete'}}</button>
+        </div>
+        <div class="card-footer text-muted">
+          {{data.datetime.toDate() | date:'dd MMMM yyy'}}
+        </div>
+      </div>
+  </div>
+  <!-- modall -->
+
+  <ng-template #portofolio let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Add Portofolio</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label>Name</label>
+          <div class="input-textarea">
+            <input [(ngModel)]="data.name" name="name" class="form-control" placeholder="Nama">
+          </div>
+          
+          <label>Description</label>
+          <div class="input-textarea">
+            <input [(ngModel)]="data.description" name="description" class="form-control" placeholder="Description">
+          </div>
+          
+          <!-- Photos -->
+          <label>Cover</label>
+          <div class="input-group mb-3">
+            <div class="custom-file">
+                <input [(ngModel)]="data.cover" name="cover" (change)="onFileSelectedCover($event)"
+                    accept=".png,.jpg"
+                    [disabled]="data.name == null || data.description == null"
+                    type="file" class="custom-file-input" id="inputGroupFileCover">
+                <label class="custom-file-label" for="inputGroupFileCover">Choose file</label>
+            </div>
+          </div>
+
+          <!-- Preview & loading -->
+          <!-- <div class="image-preview mb-3" *ngIf="previewUrlCover">
+            <img [src]="previewUrlCover" height="300" />
+          </div> -->
+
+          <div class="progress" *ngIf="uploadProgressCover">
+              <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="0"
+                  aria-valuemin="0" aria-valuemax="100">{{uploadProgressCover | async}}%</div>
+          </div>
+
+          <label>Banner</label>
+          <div class="input-group mb-3">
+            <div class="custom-file">
+                <input [(ngModel)]="data.banner" name="banner" (change)="onFileSelectedBanner($event)"
+                    accept=".png,.jpg"
+                    [disabled]="data.name == null || data.description == null"
+                    type="file" class="custom-file-input" id="inputGroupFileBanner">
+                <label class="custom-file-label" for="inputGroupFileBanner">Choose file</label>
+            </div>
+          </div>
+
+          <!-- Preview & loading -->
+          <!-- <div class="image-preview mb-3" *ngIf="previewUrlBanner">
+            <img [src]="previewUrlBanner" height="300" />
+          </div> -->
+
+          <div class="progress" *ngIf="uploadProgressBanner">
+              <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="0"
+                  aria-valuemin="0" aria-valuemax="100">{{uploadProgressBanner | async}}%</div>
+          </div>
+
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Add Features</h4>
+          </div>
+          <br>
+
+          <!-- Features -->
+          <label>Feature 1</label>
+          <div class="input-textarea">
+            <input [(ngModel)]="data.desc_feature1" name="desc_feature1" class="form-control" placeholder="Description Feature One">
+          </div>
+
+          <label>Feature 2</label>
+          <div class="input-textarea">
+            <input [(ngModel)]="data.desc_feature2" name="desc_feature2" class="form-control" placeholder="Description Feature Two">
+          </div>
+
+          <label>Feature 3</label>
+          <div class="input-textarea">
+            <input [(ngModel)]="data.desc_feature3" name="desc_feature3" class="form-control" placeholder="Description Feature Three">
+          </div>
+
+          <label>Feature 4</label>
+          <div class="input-textarea">
+            <input [(ngModel)]="data.desc_feature4" name="desc_feature4" class="form-control" placeholder="Description Feature Four">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" style="margin-right: 10px;"
+        (click)="addPortofolio(); modal.close('Saved')" [disabled]="loading || banner == null || cover == null">{{loading ? 'Saving..':'Save'}}</button>
+    </div>
+  </ng-template>

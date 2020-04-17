@@ -1,0 +1,287 @@
+<div class="wrapper">
+    <div class="page-header section-dark" style="background-image: url('assets/img/background.jpg')">
+        <div class="filter"></div>
+        <div class="content-center">
+            <div class="container">
+                <div class="title-brand">
+                    <h2 class="presentation-title" style="margin-left: -15px;">Pejuang Tech</h2>
+                    <h2 class="title">Build Your Mobile and Web Application</h2>
+                    <div class="fog-low">
+                        <img src="assets/img/fog-low.png" alt="">
+                    </div>
+                    <div class="fog-low right">
+                        <img src="assets/img/fog-low.png" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="moving-clouds" style="background-image: url('assets/img/clouds.png'); "></div>
+    </div>
+    <div class="main">
+        <!-- <app-basicelements></app-basicelements>
+        <app-navigation></app-navigation> -->
+        <div class="section">
+            <div class="container">
+                <div class="title" style="text-align: center;">
+                    <h2><b>ABOUT</b></h2>
+                </div>
+                <p style="text-align: center;">
+                    {{about.isi}}
+                </p>
+
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="title" style="margin-bottom: 20px; text-align: center;">
+                    <h2>OUR TEAM</h2>
+                    <br>
+                    <p></p>
+                </div>
+                <div class="row example-page">
+                    <div class="col-md-6 text-center" *ngFor="let item of dataTeam">
+                        <div class="owner">
+                            <div class="avatar">
+                                <img src="{{images[item.images] == undefined ? 'https://images.expertmarket.co.uk/wp-content/uploads/sites/default/files/web-design/Computer%20Programmer.png':images[item.images]}}"
+                                    alt="Circle Image" class="img-circle  img-responsive">
+                            </div>
+                            <div class="name">
+                                <h4 class="title">{{item.nama}}</h4>
+                                <h6 style="margin-top: -20px;">{{item.skill}}</h6>
+                                <br>
+                                <p></p>
+                                <br>
+                                <p></p>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-md-6 text-center">
+                        <div class="owner">
+                            <div class="avatar">
+                                <img src="./assets/img/arvian.jpg" alt="Circle Image" class="img-circle img-responsive">
+                            </div>
+                            <div class="name">
+                                <h4 class="title">Rivani Arvian P</h4>
+                                <h6 style="margin-top: -20px;">Back End Developer</h6>
+                            </div>
+                        </div>
+                    </div> -->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="carousel">
+            <div class="container">
+                <div class="tim-title" style="text-align: center;">
+                    <h3>Customer Stories</h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 mr-auto ml-auto">
+                        <div class="card page-carousel">
+                            <ngb-carousel>
+                                <ng-template ngbSlide *ngFor="let data of dataStories">
+                                    <img src="{{data.image}}" alt="Random first slide">
+                                    <div class="carousel-caption">
+                                        <p>{{data.name}}</p>
+                                    </div>
+                                </ng-template>
+                            </ngb-carousel>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section text-center">
+            <div class="container">
+                <h2>Project Work Processing</h2>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="info">
+                            <img src="assets/img/mail.svg" width="60px" height="60px" />
+                            <div class="description">
+                                <h4 class="info-title">Contact Us</h4>
+                                <p class="description text-justify">Anything about your needs and questions regarding
+                                    the
+                                    project
+                                    website and mobile application, please contact us using the following contact form.
+                                    Our marketing will answer your questions within a snap.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info">
+                            <img src="assets/img/negotiation.svg" width="60px" height="60px" />
+                            <div class="description">
+                                <h4 class="info-title">Our Contract</h4>
+                                <p class="description text-justify">To start a contract with our Team, please clarify
+                                    matters relating to technical issues first, development risks, processing time and
+                                    especially the costs required.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info">
+                            <img src="assets/img/app.svg" width="60px" height="60px" />
+                            <div class="description">
+                                <h4 class="info-title">Basic Specification</h4>
+                                <p class="description text-justify">Before the development process begins, we will
+                                    determine the basic specifications and designs first. These two parts are then shown
+                                    to the client, and we will begin to build after getting approval.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info">
+                            <img src="assets/img/app-development.svg" width="60px" height="60px" />
+                            <div class="description">
+                                <h4 class="info-title">UI/Ux Design</h4>
+                                <p class="description text-justify">To map out a quality UI / UX design as your desire,
+                                    our team designers will make a design
+                                    according to the basic needs while considering to the client's desires to create a
+                                    good design and easy to use by end users.
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 60px;">
+                    <div class="col"></div>
+                    <div class="col-md-3">
+                        <div class="info">
+                            <img src="assets/img/seo-and-web.svg" width="60px" height="60px" />
+                            <div class="description">
+                                <h4 class="info-title">Development</h4>
+                                <p class="description text-justify">documentation in the application. The coding /
+                                    development stage by the programmer will be carried out based on the detailed design
+                                    made by our team.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info">
+                            <img src="assets/img/speed.svg" width="60px" height="60px" />
+                            <div class="description">
+                                <h4 class="info-title">Testing App</h4>
+                                <p class="description text-justify">After the Mobile application or website have been
+                                    completed, it followed by a trial session which consists of examining bugs, display
+                                    compatibility, page transitions and others.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="info">
+                            <img src="assets/img/globe.svg" width="60px" height="60px" />
+                            <div class="description">
+                                <h4 class="info-title">Publication Phase</h4>
+                                <p class="description text-justify">Applications nor websites that have pass through the
+                                    trial process, will be published after. The application is uploaded to Google Play /
+                                    Appstore and the website is uploaded to the server after the domain is set.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section section-dark">
+            <div class="container">
+                <h2 class="title text-center">Portofolio</h2>
+                <div class="row example-page">
+                    <div class="col-md-6 text-center" routerLinkActive="active" *ngFor="let data of dataPortofolios">
+                        <a [routerLink]="['/portofolio', data.id]">
+                            <img src="{{data.cover == undefined ? 'https://images.expertmarket.co.uk/wp-content/uploads/sites/default/files/web-design/Computer%20Programmer.png':data.cover}}" alt="Rounded Image" class="img-rounded img-responsive"
+                                style="width: 100%">
+                            <a [routerLink]="['/portofolio', data.id]" class="btn btn-outline-neutral btn-round">{{data.name}}</a>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section landing-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 mr-auto ml-auto">
+                        <h2 class="text-center">Send Your Story About PejuangTech</h2>
+                        <form class="contact-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                    <div class="input-group" [ngClass]="{'input-group-focus':focus===true}">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="nc-icon nc-single-02"></i></span>
+                                        </div>
+                                        <input type="text" [(ngModel)]="data.name" name="name" class="form-control"
+                                            placeholder="Name" (focus)="focus=true" (blur)="focus=false">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                    <div class="input-group" [ngClass]="{'input-group-focus':focus1===true}">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"> <i class="nc-icon nc-email-85"></i></span>
+                                        </div>
+                                        <input type="text" [(ngModel)]="data.email" name="email" class="form-control"
+                                            placeholder="Email" (focus)="focus1=true" (blur)="focus1=false">
+                                    </div>
+                                </div>
+                            </div>
+                            <label>Message</label>
+                            <textarea [(ngModel)]="data.message" name="message" class="form-control" rows="4"
+                                placeholder="Tell us your thoughts and feelings..."></textarea>
+
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input [(ngModel)]="data.image" name="image" (change)="onFileSelected($event)"
+                                        accept=".png,.jpg"
+                                        [disabled]="data.name == null || data.email == null || data.message == null"
+                                        type="file" class="custom-file-input" id="inputGroupFile02">
+                                    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+                                </div>
+                            </div>
+
+                            <div class="image-preview mb-3" *ngIf="previewUrl">
+                                <img [src]="previewUrl" height="300" />
+                            </div>
+
+                            <div class="progress" *ngIf="uploadProgress">
+                                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="0"
+                                    aria-valuemin="0" aria-valuemax="100">{{uploadProgress | async}}%</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 mr-auto ml-auto">
+                                    <button class="btn btn-danger btn-lg btn-fill" (click)="sendStories()"
+                                        [disabled]="loading || image == null">{{loading ? 'Sending..':'Send Story'}}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section section-dark">
+        <div class="container">
+            <h3 class="title">Contact</h3>
+            <div class="row">
+                <div class="col-md-8">
+                    <i class="nc-icon nc-email-85" style="color: white;"></i>
+                    <p style="color: white;">pejuangtech.official@gmail.com</p>
+                    <i class="nc-icon nc-chat-33" style="color: white;"></i>
+                    <p style="color: white;">+62 812-2930-4140</p>
+                    <p style="color: white;">+62 823-1603-5745</p>
+                </div>
+            </div>
+        </div>
+    </div>

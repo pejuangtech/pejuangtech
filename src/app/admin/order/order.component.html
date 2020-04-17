@@ -1,0 +1,85 @@
+<div class="section">
+  <div class="container">
+    <ngb-tabset type="pills" style="margin-left: 20px; text-align: left;">
+      <ngb-tab title="Order
+      In">
+        <ng-template ngbTabContent>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Tables Order in</h4>
+                </div>
+                <div class="card-body">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let data of dataOrder; let idx=index">
+                        <th scope="row">{{idx+1}}</th>
+                        <td>
+                          {{data.name}}
+                        </td>
+                        <td>
+                          {{data.phone_number}}
+                        </td>
+                        <td>
+                          {{data.email}}
+                        </td>
+                        <td>
+                          <button type="button" class="btn btn-primary btn-round" style="margin-right: 5px;"
+                            (click)="open()">Detail</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Order Accept">
+        <ng-template ngbTabContent>
+          <!-- <button class="btn btn-primary" style="text-align: right; margin-left: 50px;" (click)="openModal(content)">Add
+            Features</button> -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of data; let idx=index">
+                <th scope="row">{{idx+1}}</th>
+                <td>
+                  {{data.name}}
+                </td>
+                <td>
+                  {{data.phone_number}}
+                </td>
+                <td>
+                  {{data.email}}
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success btn-round" (click)="openAccepted()">Accepted</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+</div>
