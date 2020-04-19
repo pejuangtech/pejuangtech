@@ -4,7 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { ImageUploaderComponent } from '../media/image-uploader/image-uploader.component';
 import { UploadService } from '../upload.service';
 import { Upload } from '../upload';

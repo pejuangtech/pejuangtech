@@ -24,11 +24,18 @@ export class NavbarComponent implements OnInit {
     ) {
         this.sidebarVisible = false;
         this.fsAuth.auth.onAuthStateChanged(user => {
-            if(user.uid != null) {
+            if(user == null) {
+                console.error();
+            } else if (user.uid != null) {
                 this.isAdmin = true;
+                this.getUser(user.uid);
             }
-            this.getUser(user.uid);
-        });
+        }, (error) => {
+            // Handle error here
+            // Show popup with errors or just console.error
+            console.error(error);
+         }
+        );
     }
 
     ngOnInit() {

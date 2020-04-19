@@ -328,6 +328,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shared/navbar/navbar.component */ "./src/app/shared/navbar/navbar.component.ts");
+/* harmony import */ var ngx_cookieconsent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-cookieconsent */ "./node_modules/ngx-cookieconsent/esm5/ngx-cookieconsent.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -346,16 +347,37 @@ var __param = (undefined && undefined.__param) || function (paramIndex, decorato
 
 
 
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent(renderer, router, document, element, location) {
+    function AppComponent(renderer, router, document, element, location, ccService) {
         this.renderer = renderer;
         this.router = router;
         this.document = document;
         this.element = element;
         this.location = location;
+        this.ccService = ccService;
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
+        // subscribe to cookieconsent observables to react to main events
+        this.popupOpenSubscription = this.ccService.popupOpen$.subscribe(function () {
+            // you can use this.ccService.getConfig() to do stuff...
+        });
+        this.popupCloseSubscription = this.ccService.popupClose$.subscribe(function () {
+            // you can use this.ccService.getConfig() to do stuff...
+        });
+        this.initializeSubscription = this.ccService.initialize$.subscribe(function (event) {
+            // you can use this.ccService.getConfig() to do stuff...
+        });
+        this.statusChangeSubscription = this.ccService.statusChange$.subscribe(function (event) {
+            // you can use this.ccService.getConfig() to do stuff...
+        });
+        this.revokeChoiceSubscription = this.ccService.revokeChoice$.subscribe(function () {
+            // you can use this.ccService.getConfig() to do stuff...
+        });
+        this.noCookieLawSubscription = this.ccService.noCookieLaw$.subscribe(function (event) {
+            // you can use this.ccService.getConfig() to do stuff...
+        });
         var navbar = this.element.nativeElement.children[0].children[0];
         this._router = this.router.events.filter(function (event) { return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]; }).subscribe(function (event) {
             if (window.outerWidth > 991) {
@@ -399,6 +421,15 @@ var AppComponent = /** @class */ (function () {
             return false;
         }
     };
+    AppComponent.prototype.ngOnDestroy = function () {
+        // unsubscribe to cookieconsent observables to prevent memory leaks
+        this.popupOpenSubscription.unsubscribe();
+        this.popupCloseSubscription.unsubscribe();
+        this.initializeSubscription.unsubscribe();
+        this.statusChangeSubscription.unsubscribe();
+        this.revokeChoiceSubscription.unsubscribe();
+        this.noCookieLawSubscription.unsubscribe();
+    };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])(_shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_5__["NavbarComponent"]),
         __metadata("design:type", _shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_5__["NavbarComponent"])
@@ -410,7 +441,10 @@ var AppComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
         }),
         __param(2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DOCUMENT"])),
-        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], Object, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"]])
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], Object, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"],
+            _angular_common__WEBPACK_IMPORTED_MODULE_4__["Location"],
+            ngx_cookieconsent__WEBPACK_IMPORTED_MODULE_6__["NgcCookieConsentService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -459,6 +493,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modal_detail_order_detail_order_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./modal/detail-order/detail-order.component */ "./src/app/modal/detail-order/detail-order.component.ts");
 /* harmony import */ var _modal_accepted_order_accepted_order_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./modal/accepted-order/accepted-order.component */ "./src/app/modal/accepted-order/accepted-order.component.ts");
 /* harmony import */ var _components_portofolio_portofolio_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/portofolio/portofolio.component */ "./src/app/components/portofolio/portofolio.component.ts");
+/* harmony import */ var ngx_cookieconsent__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ngx-cookieconsent */ "./node_modules/ngx-cookieconsent/esm5/ngx-cookieconsent.es5.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -497,6 +532,22 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+var cookieConfig = {
+    cookie: {
+        domain: 'localhost' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+    },
+    palette: {
+        popup: {
+            background: '#000'
+        },
+        button: {
+            background: '#f1d600'
+        }
+    },
+    theme: 'edgeless',
+    type: 'opt-out'
+};
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -525,6 +576,7 @@ var AppModule = /** @class */ (function () {
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"],
                 _angular_common__WEBPACK_IMPORTED_MODULE_6__["CommonModule"],
                 _components_components_module__WEBPACK_IMPORTED_MODULE_11__["ComponentsModule"],
+                ngx_cookieconsent__WEBPACK_IMPORTED_MODULE_30__["NgcCookieConsentModule"].forRoot(cookieConfig),
                 _angular_fire__WEBPACK_IMPORTED_MODULE_14__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_19__["environment"].firebase),
                 _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_15__["AngularFirestoreModule"],
                 _angular_fire_auth__WEBPACK_IMPORTED_MODULE_17__["AngularFireAuthModule"],
@@ -709,9 +761,7 @@ var AuthComponent = /** @class */ (function () {
     };
     AuthComponent.prototype.cekAkses = function (uid) {
         var _this = this;
-        console.log(uid);
         this.db.collection('admin').doc(uid).get().subscribe(function (res) {
-            console.log(res.data());
             if (res.data() != undefined)
                 _this.routeAction(res.data());
             else
@@ -729,7 +779,6 @@ var AuthComponent = /** @class */ (function () {
             this.router.navigate(['/admin/dashboard']);
         }
         else if (data.kategori == 'admin') {
-            console.log(data.akses[0]);
             this.router.navigate(['/' + data.akses[0]]);
         }
         else
@@ -905,8 +954,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/index.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/index.js");
-/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! firebase */ "./node_modules/firebase/dist/index.cjs.js");
-/* harmony import */ var firebase__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(firebase__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _upload_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../upload.service */ "./src/app/upload.service.ts");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
@@ -973,7 +1022,7 @@ var ComponentsComponent = /** @class */ (function () {
         this.getPortofolios();
         this.getAbout();
         this.getTeams();
-        this.timestamp = firebase__WEBPACK_IMPORTED_MODULE_5__["firestore"].FieldValue.serverTimestamp();
+        this.timestamp = firebase_app__WEBPACK_IMPORTED_MODULE_5__["firestore"].FieldValue.serverTimestamp();
     }
     ComponentsComponent.prototype.isWeekend = function (date) {
         var d = new Date(date.year, date.month - 1, date.day);
@@ -2128,7 +2177,6 @@ var ImageUploaderComponent = /** @class */ (function () {
         this.passEntry = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.imageChangedEvent = '';
         this.croppedImage = '';
-        console.log(this.data);
         this.rasio = this.data.rasio;
         this.path = this.data.path;
     }
@@ -2153,7 +2201,6 @@ var ImageUploaderComponent = /** @class */ (function () {
         var _this = this;
         this.loading = true;
         this.storage.ref(this.path).putString(this.croppedImage, 'data_url').then(function (res) {
-            console.log(res);
             _this.activeModal.close(true);
         });
     };
@@ -2319,12 +2366,10 @@ var DetailOrderComponent = /** @class */ (function () {
         this.passEntry = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     DetailOrderComponent.prototype.ngOnInit = function () {
-        console.log(this.user);
     };
     DetailOrderComponent.prototype.accept = function (user) {
         var _this = this;
         var id = user.id;
-        console.log(id);
         var r = confirm("Are you sure you want to accept this story?");
         if (r == true) {
             var dt = { verified: true };
@@ -2518,13 +2563,11 @@ var EditAdministratorComponent = /** @class */ (function () {
         this.passEntry = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
     }
     EditAdministratorComponent.prototype.ngOnInit = function () {
-        console.log(this.user);
     };
     EditAdministratorComponent.prototype.updateMember = function () {
         var _this = this;
         this.passEntry.emit(this.user);
         var doc = this.user.id;
-        console.log(doc);
         this.db.collection('users').doc(doc).update(this.user).then(function (res) {
             _this.loading = false;
             alert('Administrator baru berhasil diperbarui');
@@ -2639,14 +2682,12 @@ var ModalAdministratorComponent = /** @class */ (function () {
         var _this = this;
         this.db.collection('users').valueChanges().subscribe(function (res) {
             _this.user = res;
-            console.log(_this.user);
         });
     };
     ModalAdministratorComponent.prototype.getAbout = function () {
         var _this = this;
         this.db.collection('settings').doc('about').valueChanges().subscribe(function (res) {
             _this.about = res;
-            console.log(_this.about);
         });
     };
     ModalAdministratorComponent.prototype.tambahData = function () {
@@ -2898,10 +2939,17 @@ var NavbarComponent = /** @class */ (function () {
         this.user = {};
         this.sidebarVisible = false;
         this.fsAuth.auth.onAuthStateChanged(function (user) {
-            if (user.uid != null) {
-                _this.isAdmin = true;
+            if (user == null) {
+                console.error();
             }
-            _this.getUser(user.uid);
+            else if (user.uid != null) {
+                _this.isAdmin = true;
+                _this.getUser(user.uid);
+            }
+        }, function (error) {
+            // Handle error here
+            // Show popup with errors or just console.error
+            console.error(error);
         });
     }
     NavbarComponent.prototype.ngOnInit = function () {
@@ -3120,7 +3168,8 @@ var environment = {
         messagingSenderId: "772296898600",
         appId: "1:772296898600:web:99a3dbd8fc47ff086b1d1d",
         measurementId: "G-ZK76E9N0RR"
-    }
+    },
+    Frontend: {}
 };
 
 

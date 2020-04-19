@@ -23,7 +23,6 @@ export class ImageUploaderComponent implements OnInit {
     public db: AngularFirestore,
     public storage:AngularFireStorage
   ) {
-    console.log(this.data);
     this.rasio=this.data.rasio;
     this.path=this.data.path;
    }
@@ -54,7 +53,6 @@ export class ImageUploaderComponent implements OnInit {
   {
     this.loading=true;
     this.storage.ref(this.path).putString(this.croppedImage, 'data_url').then(res=>{
-      console.log(res);
       this.activeModal.close(true);
     });    
   }

@@ -32,6 +32,23 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { DetailOrderComponent } from './modal/detail-order/detail-order.component';
 import { AcceptedOrderComponent } from './modal/accepted-order/accepted-order.component';
 import { PortofolioComponent } from './components/portofolio/portofolio.component';
+import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+
+const cookieConfig:NgcCookieConsentConfig = {
+  cookie: {
+    domain: 'localhost' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+  },
+  palette: {
+    popup: {
+      background: '#000'
+    },
+    button: {
+      background: '#f1d600'
+    }
+  },
+  theme: 'edgeless',
+  type: 'opt-out'
+};
 
 @NgModule({
   declarations: [
@@ -57,6 +74,7 @@ import { PortofolioComponent } from './components/portofolio/portofolio.componen
     RouterModule,
     CommonModule,
     ComponentsModule,
+    NgcCookieConsentModule.forRoot(cookieConfig),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,

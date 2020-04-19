@@ -28,7 +28,6 @@ export class EditAdministratorComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.user);
   }
 
 
@@ -36,7 +35,6 @@ export class EditAdministratorComponent implements OnInit {
   updateMember() {
     this.passEntry.emit(this.user);
     var doc = this.user.id;
-    console.log(doc);
     this.db.collection('users').doc(doc).update(this.user).then(res => {
       this.loading = false;
       alert('Administrator baru berhasil diperbarui')

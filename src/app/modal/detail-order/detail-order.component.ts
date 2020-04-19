@@ -16,13 +16,11 @@ export class DetailOrderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.user);
   }
 
   loading: boolean;
   accept(user) {
     var id = user.id;
-    console.log(id);
     var r = confirm("Are you sure you want to accept this story?");
     if (r == true) {
       var dt = { verified: true }

@@ -41,7 +41,6 @@ export class ModalAdministratorComponent implements OnInit {
   getUser() {
     this.db.collection('users').valueChanges().subscribe(res => {
       this.user = res;
-      console.log(this.user);
     })
   }
 
@@ -49,7 +48,6 @@ export class ModalAdministratorComponent implements OnInit {
   getAbout() {
     this.db.collection('settings').doc('about').valueChanges().subscribe(res => {
       this.about = res;
-      console.log(this.about);
     })
   }
 
